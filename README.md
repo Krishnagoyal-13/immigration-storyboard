@@ -26,7 +26,7 @@ A full-stack AI-powered Next.js application that helps users explore Canadian im
 
 ### 1. 📦 Clone the repository
 ```bash
-git clone https://github.com/your-username/ircc-storyboard.git
+https://github.com/Krishnagoyal-13/immigration-storyboard.git
 cd ircc-storyboard
 ```
 
@@ -113,7 +113,7 @@ Then click any step to explore deeper layers.
 ---
 
 ## 👤 Author
-- Built with ❤️ by [Your Name]
+- Krishna Goyal
 
 ---
 
