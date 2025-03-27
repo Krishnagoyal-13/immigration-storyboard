@@ -1,0 +1,37 @@
+[
+    {
+      "step_number": 1,
+      "title": "Who can apply",
+      "description": "To be eligible for a study permit, you must meet specific requirements.",
+      "substeps": [
+        {
+          "step_number": 1,
+          "title": "Eligibility for a study permit",
+          "description": "You must have a letter of acceptance from a designated learning institution (DLI)."
+        },
+        {
+          "step_number": 2,
+          "title": "Exceptions",
+          "description": "Some individuals may be exempt from requiring a study permit under special circumstances."
+        }
+      ]
+    },
+    {
+      "step_number": 2,
+      "title": "Get your documents ready",
+      "description": "Before applying, ensure you have all required documents including ID and financial proof.",
+      "substeps": [
+        {
+          "step_number": 1,
+          "title": "Valid Passport",
+          "description": "You’ll need a valid passport for the entire duration of your study in Canada."
+        },
+        {
+          "step_number": 2,
+          "title": "Proof of funds",
+          "description": "Show you have enough money to pay for tuition fees and living expenses."
+        }
+      ]
+    }
+  ]
+  
