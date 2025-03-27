@@ -37,6 +37,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ result });
   } catch (error) {
     console.error("LLM Error:", error);
-    return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
   }
 }
