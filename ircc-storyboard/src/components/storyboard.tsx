@@ -58,7 +58,6 @@ export default function Storyboard({
         setLoadingSubsteps(false);
       }
     } else {
-      // Navigate to detailed explore page using original prompt and clicked title
       router.push(
         `/explore?prompt=${encodeURIComponent(
           originalPrompt
@@ -80,9 +79,13 @@ export default function Storyboard({
             <CardContent className="p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <h3 className="text-lg font-semibold">{step.title}</h3>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {step.title}
+                  </h3>
                   {step.description && (
-                    <p className="text-sm text-gray-600">{step.description}</p>
+                    <p className="text-sm text-foreground">
+                      {step.description}
+                    </p>
                   )}
                 </div>
                 <ChevronRight className="text-muted-foreground" />
@@ -93,28 +96,31 @@ export default function Storyboard({
       </div>
 
       {/* Substep detail */}
-      <div className="bg-white rounded-xl shadow-md p-4 min-h-[300px]">
+      <div className="bg-card text-card-foreground rounded-xl shadow-md p-4 min-h-[300px]">
         {activeStepIndex !== null ? (
           <>
-            <h2 className="text-xl font-bold mb-2">
+            <h2 className="text-xl font-bold mb-2 text-foreground">
               {dynamicSteps[activeStepIndex].title}
             </h2>
             {dynamicSteps[activeStepIndex].description && (
-              <p className="mb-4 text-gray-700">
+              <p className="mb-4 text-foreground">
                 {dynamicSteps[activeStepIndex].description}
               </p>
             )}
             {loadingSubsteps ? (
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Loader2 className="animate-spin" /> Fetching substeps from
-                LLM...
+                <Loader2 className="animate-spin" /> Fetching substeps from LLM...
               </div>
             ) : dynamicSteps[activeStepIndex].substeps ? (
               <div className="space-y-3">
                 {dynamicSteps[activeStepIndex].substeps!.map((sub, i) => (
                   <div key={i} className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="text-md font-semibold">{sub.title}</h4>
-                    <p className="text-sm text-gray-600">{sub.description}</p>
+                    <h4 className="text-md font-semibold text-foreground">
+                      {sub.title}
+                    </h4>
+                    <p className="text-sm text-foreground">
+                      {sub.description}
+                    </p>
                   </div>
                 ))}
               </div>
