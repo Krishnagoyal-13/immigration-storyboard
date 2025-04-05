@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import Storyboard from "@/components/storyboard";
+import { Sparkles, Loader2 } from "lucide-react";
+import ThemeToggle from "@/components/theme-toggle";
 
 interface Step {
   step_number: number;
@@ -33,8 +36,8 @@ export default function PromptPage() {
       });
 
       const data = await res.json();
-
       const parsed = JSON.parse(data.result); // expects JSON from LLM
+
       if (Array.isArray(parsed)) {
         setSteps(parsed);
       } else {
@@ -49,31 +52,52 @@ export default function PromptPage() {
   };
 
   return (
-    <main className="p-6 max-w-5xl mx-auto min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">AI-Powered Storyboard Builder</h1>
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 dark:from-gray-900 dark:to-black text-foreground transition-colors duration-300 py-12 px-6">
+      <ThemeToggle />
 
-      <div className="flex gap-2 mb-6">
-        <Input
-          placeholder="Ask about a process (e.g., how to apply for PR)..."
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-        />
-        <Button onClick={handleSubmit} disabled={loading}>
-          {loading ? "Thinking..." : "Ask"}
-        </Button>
-      </div>
-
-      {error && <p className="text-red-500">{error}</p>}
-
-      {steps ? (
-        <Storyboard steps={steps} />
-      ) : (
-        !loading && (
-          <p className="text-muted-foreground">
-            Response will appear here as storyboard steps.
+      <div className="max-w-4xl mx-auto space-y-10 animate-in fade-in-50 zoom-in-95">
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center justify-center bg-primary/10 p-3 rounded-full text-primary">
+            <Sparkles className="w-6 h-6" />
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight">AI-Powered Storyboard</h1>
+          <p className="text-muted-foreground text-sm">
+            Ask how to do anything – from immigration steps to permit applications!
           </p>
-        )
-      )}
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-3 items-center justify-center">
+          <Input
+            placeholder="e.g. How to apply for a Canadian study permit"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            className="md:w-[60%]"
+          />
+          <Button onClick={handleSubmit} disabled={loading} className="w-full md:w-auto">
+            {loading ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="animate-spin w-4 h-4" /> Thinking...
+              </span>
+            ) : (
+              "Ask"
+            )}
+          </Button>
+        </div>
+
+        {error && <p className="text-red-500 text-center">{error}</p>}
+
+        {steps ? (
+          <Card className="bg-card text-card-foreground border border-border rounded-xl shadow-md p-6 animate-in fade-in slide-in-from-bottom-3 overflow-y-auto max-h-[60vh] scroll-smooth">
+            <Storyboard steps={steps} originalPrompt={prompt} />
+          </Card>
+        ) : (
+          !loading && (
+            <p className="text-muted-foreground text-center">
+              Response will appear here as storyboard steps.
+            </p>
+          )
+        )}
+      </div>
     </main>
   );
 }
