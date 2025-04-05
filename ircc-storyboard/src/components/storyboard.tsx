@@ -21,13 +21,16 @@ interface Step {
 interface StoryboardProps {
   steps: Step[];
   originalPrompt?: string;
+  initialActiveIndex?: number | null;
 }
 
 export default function Storyboard({
   steps,
   originalPrompt = "",
+  initialActiveIndex = null,
+
 }: StoryboardProps) {
-  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
+  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(initialActiveIndex);
   const [dynamicSteps, setDynamicSteps] = useState<Step[]>(steps);
   const [loadingSubsteps, setLoadingSubsteps] = useState(false);
   const router = useRouter();

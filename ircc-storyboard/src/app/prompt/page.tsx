@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,6 +18,7 @@ interface Step {
 export default function PromptPage() {
   const [prompt, setPrompt] = useState("");
   const [steps, setSteps] = useState<Step[] | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,6 +28,7 @@ export default function PromptPage() {
     setLoading(true);
     setSteps(null);
     setError(null);
+    setActiveIndex(null);
 
     try {
       const res = await fetch("/api/chat", {
@@ -36,10 +38,11 @@ export default function PromptPage() {
       });
 
       const data = await res.json();
-      const parsed = JSON.parse(data.result); // expects JSON from LLM
+      const parsed = JSON.parse(data.result);
 
       if (Array.isArray(parsed)) {
         setSteps(parsed);
+        setActiveIndex(0); // Automatically show first step's details
       } else {
         setError("The response format was not valid steps JSON.");
       }
@@ -87,8 +90,8 @@ export default function PromptPage() {
         {error && <p className="text-red-500 text-center">{error}</p>}
 
         {steps ? (
-          <Card className="bg-card text-card-foreground border border-border rounded-xl shadow-md p-6 animate-in fade-in slide-in-from-bottom-3 overflow-y-auto max-h-[60vh] scroll-smooth">
-            <Storyboard steps={steps} originalPrompt={prompt} />
+          <Card className="bg-card text-card-foreground border border-border rounded-xl shadow-md p-6 animate-in fade-in slide-in-from-bottom-3">
+            <Storyboard steps={steps} originalPrompt={prompt} initialActiveIndex={activeIndex} />
           </Card>
         ) : (
           !loading && (
