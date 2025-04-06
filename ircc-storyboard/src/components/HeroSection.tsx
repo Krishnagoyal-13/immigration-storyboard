@@ -17,7 +17,7 @@ export const HeroSection = () => {
             navigate the process with clarity.
           </p>
           <button
-            onClick={() => router.push('/auth')}
+            onClick={() => router.push('/public/auth')}
             className="bg-blue-600 hover:bg-blue-700 transition-colors text-white font-medium py-3 px-8 rounded-lg flex items-center group"
           >
             Start Now
