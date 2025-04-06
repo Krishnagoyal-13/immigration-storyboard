@@ -8,7 +8,7 @@ export const LoginForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Add authentication logic here
-    router.push('/dashboard')
+    router.push('/private/storyboard')
   }
   // Inside your component
 <button

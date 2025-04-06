@@ -46,7 +46,7 @@ export const NavigationCards = () => {
           {cards.map((card, index) => (
             <div
               key={index}
-              onClick={() => router.push('/auth')}
+              onClick={() => router.push('/public/auth')}
               className="bg-white border border-gray-100 hover:border-blue-200 rounded-xl shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center cursor-pointer"
             >
               <div className="mb-4">{card.icon}</div>

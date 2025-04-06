@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Storyboard from "@/components/storyboard";
-
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation'
 interface Step {
   step_number: number;
   title: string;
@@ -17,6 +18,18 @@ export default function PromptPage() {
   const [steps, setSteps] = useState<Step[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth') // Redirect to login if not signed in
+    }
+  }, [status, router])
+
+  if (status === 'loading') {
+    return <div>Loading...</div>
+  }
 
   const handleSubmit = async () => {
     if (!prompt.trim()) return;
@@ -49,9 +62,13 @@ export default function PromptPage() {
   };
 
   return (
+    
     <main className="p-6 max-w-5xl mx-auto min-h-screen">
       <h1 className="text-2xl font-bold mb-4">AI-Powered Storyboard Builder</h1>
-
+      <div className="p-6">
+      <h1 className="text-2xl font-bold">Welcome, {session?.user?.name}!</h1>
+      <p className="mt-2 text-gray-600">You're signed in and can use the app.</p>
+    </div>
       <div className="flex gap-2 mb-6">
         <Input
           placeholder="Ask about a process (e.g., how to apply for PR)..."
