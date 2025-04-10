@@ -21,49 +21,40 @@ interface Step {
 interface StoryboardProps {
   steps: Step[];
   originalPrompt?: string;
+  initialActiveIndex?: number | null;
 }
 
 export default function Storyboard({
   steps,
   originalPrompt = "",
+  initialActiveIndex = 0,
 }: StoryboardProps) {
-  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
+  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(initialActiveIndex);
   const [dynamicSteps, setDynamicSteps] = useState<Step[]>(steps);
   const [loadingSubsteps, setLoadingSubsteps] = useState(false);
   const router = useRouter();
 
   const handleStepClick = async (index: number) => {
     const step = dynamicSteps[index];
-
-    if (step.description) {
-      setLoadingSubsteps(true);
-      try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            prompt: `Break down the step \"${step.title}\" into detailed steps with title and description.`,
-          }),
-        });
-        const data = await res.json();
-        const parsed = JSON.parse(data.result);
-
-        const updatedSteps = [...dynamicSteps];
-        updatedSteps[index] = { ...updatedSteps[index], substeps: parsed };
-        setDynamicSteps(updatedSteps);
-        setActiveStepIndex(index);
-      } catch (err) {
-        console.error("Failed to fetch substeps:", err);
-      } finally {
-        setLoadingSubsteps(false);
-      }
-    } else {
-      // Navigate to detailed explore page using original prompt and clicked title
-      router.push(
-        `/explore?prompt=${encodeURIComponent(
-          originalPrompt
-        )}&step=${encodeURIComponent(step.title)}`
-      );
+    setLoadingSubsteps(true);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt: `Break down the step \"${step.title}\" into detailed steps with title and description.`,
+        }),
+      });
+      const data = await res.json();
+      const parsed = JSON.parse(data.result);
+      const updatedSteps = [...dynamicSteps];
+      updatedSteps[index] = { ...updatedSteps[index], substeps: parsed };
+      setDynamicSteps(updatedSteps);
+      setActiveStepIndex(index);
+    } catch (err) {
+      console.error("Failed to fetch substeps:", err);
+    } finally {
+      setLoadingSubsteps(false);
     }
   };
 
@@ -71,18 +62,25 @@ export default function Storyboard({
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
       {/* Step list */}
       <div className="space-y-4">
+        {dynamicSteps.length === 0 && (
+          <p className="text-red-500">No steps loaded</p>
+        )}
         {dynamicSteps.map((step, index) => (
           <Card
-            key={step.step_number}
+            key={`${index}-${step.title}`}
             className="cursor-pointer shadow-md hover:shadow-xl transition"
             onClick={() => handleStepClick(index)}
           >
             <CardContent className="p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <h3 className="text-lg font-semibold">{step.title}</h3>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {step.title}
+                  </h3>
                   {step.description && (
-                    <p className="text-sm text-gray-600">{step.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {step.description}
+                    </p>
                   )}
                 </div>
                 <ChevronRight className="text-muted-foreground" />
@@ -93,28 +91,32 @@ export default function Storyboard({
       </div>
 
       {/* Substep detail */}
-      <div className="bg-white rounded-xl shadow-md p-4 min-h-[300px]">
+      <div className="bg-card text-card-foreground rounded-xl shadow-md p-4 min-h-[300px]">
         {activeStepIndex !== null ? (
           <>
-            <h2 className="text-xl font-bold mb-2">
+            <h2 className="text-xl font-bold mb-2 text-foreground">
               {dynamicSteps[activeStepIndex].title}
             </h2>
             {dynamicSteps[activeStepIndex].description && (
-              <p className="mb-4 text-gray-700">
+              <p className="mb-4 text-muted-foreground">
                 {dynamicSteps[activeStepIndex].description}
               </p>
             )}
             {loadingSubsteps ? (
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Loader2 className="animate-spin" /> Fetching substeps from
-                LLM...
+                <Loader2 className="animate-spin" /> Fetching substeps from LLM...
               </div>
-            ) : dynamicSteps[activeStepIndex].substeps ? (
+            ) : Array.isArray(dynamicSteps[activeStepIndex].substeps) &&
+              dynamicSteps[activeStepIndex].substeps.length > 0 ? (
               <div className="space-y-3">
                 {dynamicSteps[activeStepIndex].substeps!.map((sub, i) => (
-                  <div key={i} className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="text-md font-semibold">{sub.title}</h4>
-                    <p className="text-sm text-gray-600">{sub.description}</p>
+                  <div key={`${i}-${sub.title}`} className="border-l-4 border-blue-500 pl-4">
+                    <h4 className="text-md font-semibold text-foreground">
+                      {sub.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {sub.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -125,7 +127,7 @@ export default function Storyboard({
             )}
           </>
         ) : (
-          <p className="text-muted-foreground">
+          <p className="text-foreground">
             Select a step to see more details.
           </p>
         )}

@@ -120,3 +120,18 @@
     @apply bg-background text-foreground;
   }
 }
+/* Ensure the button is properly styled */
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 9999px; /* Makes it circular */
+}
+
+/* Ensure the navbar has enough spacing */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

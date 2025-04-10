@@ -1,4 +1,3 @@
-// ✅ /src/app/explore/page.tsx
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -13,22 +12,24 @@ interface Step {
 
 export default function ExplorePage() {
   const searchParams = useSearchParams();
-  const prompt = searchParams.get("prompt") || "";
-  const step = searchParams.get("step") || "";
+  const promptParam = searchParams.get("prompt") || "";
+  const stepParam = searchParams.get("step") || "";
+
+  const effectivePrompt = promptParam || `Explain this step: "${stepParam}" with full details`;
+
   const [steps, setSteps] = useState<Step[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!prompt || !step) return;
-    const fullPrompt = `${prompt}. Now expand in detail: ${step}`;
+    if (!stepParam) return; // At minimum, step must be present
 
     const fetchData = async () => {
       try {
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: fullPrompt }),
+          body: JSON.stringify({ prompt: effectivePrompt }),
         });
 
         const data = await res.json();
@@ -48,20 +49,20 @@ export default function ExplorePage() {
     };
 
     fetchData();
-  }, [prompt, step]);
+  }, [promptParam, stepParam]);
 
   return (
     <main className="max-w-5xl mx-auto p-6 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">Detailed Breakdown</h1>
       <p className="text-muted-foreground mb-6">
-        Context: <strong>{prompt}</strong>
+        Context: <strong>{stepParam}</strong>
       </p>
       {loading ? (
-        <p className="text-muted-foreground">Fetching details for: {step}...</p>
+        <p className="text-muted-foreground">Fetching details for: {stepParam}...</p>
       ) : error ? (
         <p className="text-red-500">{error}</p>
       ) : (
-        <Storyboard steps={steps} />
+        <Storyboard steps={steps} originalPrompt={effectivePrompt} />
       )}
     </main>
   );
