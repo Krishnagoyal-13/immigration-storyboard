@@ -26,7 +26,7 @@ export const HeroSection = () => {
         </div>
         <div className="md:w-1/2">
           <img
-            src="https://images.unsplash.com/photo-1616362258595-28a7d3982d5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            src="canada-immigration.jpeg"
             alt="Canadian immigration guide with passport and maple leaf"
             className="w-full h-auto rounded-xl shadow-lg"
           />
