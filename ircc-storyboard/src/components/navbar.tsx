@@ -1,39 +1,44 @@
-'use client'
+"use client";
 
-import { useSession, signOut } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+import { useSession, signOut } from "next-auth/react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/theme-toggle";
 
 export default function Navbar() {
-  const { data: session, status } = useSession()
-  const router = useRouter()
+  const { data: session, status } = useSession();
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 shadow-md bg-white sticky top-0 z-50">
-      <Link href="/" className="text-xl font-bold text-blue-600">
-        Immigration Assistant
-      </Link>
-
+    <nav className="bg-transparent backdrop-blur-md border-b border-border sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+      {/* Left Section */}
       <div className="flex items-center gap-4">
-        {status === 'authenticated' ? (
+        <Link href="/" className="text-xl font-semibold text-primary">
+          Immigration Assistant
+        </Link>
+      </div>
+
+      {/* Right Section */}
+      <div className="flex items-center gap-4">
+        {status === "authenticated" ? (
           <>
-            <span className="text-gray-700">Hello, {session.user?.name?.split(' ')[0]}</span>
-            <button
-              onClick={() => signOut({ callbackUrl: '/auth' })}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+            <span className="text-muted-foreground">
+              Hello, {session.user?.name?.split(" ")[0]}
+            </span>
+            <Button
+              variant="destructive"
+              onClick={() => signOut({ callbackUrl: "/auth" })}
             >
               Sign Out
-            </button>
+            </Button>
           </>
         ) : (
-          <Link
-            href="/auth"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-          >
-            Sign In
+          <Link href="/auth">
+            <Button>Sign In</Button>
           </Link>
         )}
+
+       
       </div>
     </nav>
-  )
+  );
 }

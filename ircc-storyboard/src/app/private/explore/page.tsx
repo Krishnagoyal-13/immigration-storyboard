@@ -9,6 +9,6 @@ export default function ExplorePage() {
       <Suspense fallback={<p className="text-muted-foreground">Loading...</p>}>
         <ExplorePageClient />
       </Suspense>
-    </main>
-  );
+    </main>
+  );
 }
