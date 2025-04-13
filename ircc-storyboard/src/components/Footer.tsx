@@ -18,7 +18,7 @@ export const Footer = () => {
               Contact
             </a>
             <a href="#" className="hover:text-white transition-colors">
-              Privacy Policy
+              Know the Team
             </a>
           </div>
         </div>
