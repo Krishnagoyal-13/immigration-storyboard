@@ -11,14 +11,14 @@ export const Footer = () => {
             <p className="mt-2">Your AI-powered immigration assistant</p>
           </div>
           <div className="flex gap-8 mb-6 md:mb-0">
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="/about" className="hover:text-white transition-colors">
               About
             </a>
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="/contact" className="hover:text-white transition-colors">
               Contact
             </a>
-            <a href="#" className="hover:text-white transition-colors">
-              Privacy Policy
+            <a href="/knowtheteam" className="hover:text-white transition-colors">
+              Know the Team
             </a>
           </div>
         </div>

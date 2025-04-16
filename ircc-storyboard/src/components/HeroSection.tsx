@@ -1,5 +1,5 @@
 'use client'
-
+import Image from 'next/image'
 import React from 'react'
 import { ArrowRightIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation';
@@ -26,7 +26,7 @@ export const HeroSection = () => {
         </div>
         <div className="md:w-1/2">
           <img
-            src="canada-immigration.jpeg"
+            src="/canada-immigration.jpeg"
             alt="Canadian immigration guide with passport and maple leaf"
             className="w-full h-auto rounded-xl shadow-lg"
           />
