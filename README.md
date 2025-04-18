@@ -158,6 +158,8 @@ Each response is structured as a clickable storyboard. Click any step to explore
 
 https://github.com/user-attachments/assets/c888b6e8-4084-4734-b349-510f0d475ac9
 
+<video src="https://youtu.be/fLvJ8VdHLA0?si=JH7xS3IR0TZwlEMu"></video>
+
 ---
 
 ## 👥 Contributors
