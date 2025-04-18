@@ -1,5 +1,6 @@
 'use client'
 
+import Header from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { LinkedinIcon, TwitterIcon } from 'lucide-react'
 
@@ -19,37 +20,34 @@ export default function knowtheteamPage() {
       role: 'Machine Learning Engineer – LLM Integration',
       bio: 'Worked on integrating Large Language Models into the system for dynamic user guidance. Focused on prompt design, fine-tuning, and response handling for the AI assistant.',
       image: '/team/krishna.png',
-      linkedin: '#',
-      twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/krishnagoyal13/',
     },
     {
       name: 'Saatvik Birla',
       role: 'Frontend Developer & UI/UX Designer',
       bio: 'Led the development of the user interface using Next.js, Tailwind CSS, and modern frontend practices. Ensured responsive design and seamless user experience across devices.',
       image: '/team/saatvik.png',
-      linkedin: '#',
-      twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/saatvik-birla2003/',
     },
     {
       name: 'Apoorva Jadhav',
       role: 'Backend & Database Developer',
       bio: 'Designed and implemented the database schema for storing user progress and prompts. Managed data flow between frontend, backend, and AI system for reliable performance.',
       image: '/team/apoorva.png',
-      linkedin: '#',
-      twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/apo0orva/',
     },
     {
       name: 'Bhavya Narang',
       role: 'Natural Language Processing Engineer',
       bio: "Contributed to building the NLP pipeline, including tokenization, query interpretation, and step-by-step output generation aligned with IRCC guidelines.",
       image: '/team/bhavya.png',
-      linkedin: '#',
-      twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/bhavyaufv/',
     },
   ]
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Header />
       <main className="flex-grow">
         <section className="w-full bg-gradient-to-br from-blue-50 to-white py-16 md:py-24">
           <div className="container mx-auto px-6">

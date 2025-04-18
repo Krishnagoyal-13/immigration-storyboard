@@ -90,18 +90,20 @@ export default function PromptPage() {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-3 items-center justify-center">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleSubmit()
+          }}
+          className="flex flex-col md:flex-row gap-3 items-center justify-center"
+        >
           <Input
             placeholder="e.g. How to apply for a Canadian study permit"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             className="md:w-[60%]"
           />
-          <Button
-            onClick={handleSubmit}
-            disabled={loading}
-            className="w-full md:w-auto"
-          >
+          <Button type="submit" disabled={loading} className="w-full md:w-auto">
             {loading ? (
               <span className="flex items-center gap-2">
                 <Loader2 className="animate-spin w-4 h-4" /> Thinking...
@@ -110,7 +112,8 @@ export default function PromptPage() {
               "Ask"
             )}
           </Button>
-        </div>
+        </form>
+
 
         {error && <p className="text-red-500 text-center">{error}</p>}
 
