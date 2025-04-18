@@ -154,6 +154,12 @@ Each response is structured as a clickable storyboard. Click any step to explore
 
 ---
 
+## 🎦 Video Demo
+
+https://github.com/user-attachments/assets/c888b6e8-4084-4734-b349-510f0d475ac9
+
+---
+
 ## 👥 Contributors
 
 - **Apoorva Jadhav** – [@apoorvajadhav](https://github.com/apoorvajadhav)  
