@@ -1,3 +1,4 @@
+// ✅ /src/app/private/prompt/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -10,6 +11,7 @@ import { Sparkles, Loader2 } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { rewritePrompt } from "@/lib/semanticRewriter";
 
 interface Step {
   step_number: number;
@@ -41,11 +43,16 @@ export default function PromptPage() {
     setSteps(null);
     setError(null);
 
+    const rewritten = rewritePrompt(prompt, {
+      userType: "student", // could be dynamic in future
+      intent: "apply", // basic filtering assumption
+    });
+
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt: rewritten }),
       });
 
       const data = await res.json();
@@ -78,7 +85,8 @@ export default function PromptPage() {
             Welcome, {session?.user?.name}!
           </h1>
           <p className="text-muted-foreground text-sm">
-            Ask how to do anything – from immigration steps to permit applications!
+            Ask how to do anything – from immigration steps to permit
+            applications!
           </p>
         </div>
 
@@ -89,7 +97,11 @@ export default function PromptPage() {
             onChange={(e) => setPrompt(e.target.value)}
             className="md:w-[60%]"
           />
-          <Button onClick={handleSubmit} disabled={loading} className="w-full md:w-auto">
+          <Button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="w-full md:w-auto"
+          >
             {loading ? (
               <span className="flex items-center gap-2">
                 <Loader2 className="animate-spin w-4 h-4" /> Thinking...
