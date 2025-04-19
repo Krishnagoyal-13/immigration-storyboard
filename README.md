@@ -160,9 +160,69 @@ Each response is structured as a clickable storyboard. Click any step to explore
 
 ---
 
+## 🤖 AI Reference
+
+<img width="1177" alt="1" src="https://github.com/user-attachments/assets/ddb9a1c7-9dab-4a6d-ab2a-c3e7784c523f" />
+
+<img width="1177" alt="2" src="https://github.com/user-attachments/assets/db46aac6-1a6c-48c3-b772-2105e4e41de3" />
+
+<img width="1177" alt="3" src="https://github.com/user-attachments/assets/934ce379-4b6d-4f5c-8b99-9bb4060efa9b" />
+
+<img width="1177" alt="4" src="https://github.com/user-attachments/assets/08e9772d-d7fd-403f-a209-dca2866a95f8" />
+
+<img width="1177" alt="5" src="https://github.com/user-attachments/assets/90ccf536-a61d-49a9-8481-054acff98fe4" />
+
+![PHOTO-2025-04-17-23-32-12](https://github.com/user-attachments/assets/99eb8132-a429-4153-b6b4-212621d9bcdc)
+
+![PHOTO-2025-04-17-23-32-49](https://github.com/user-attachments/assets/1990cd2d-7e47-4378-b45f-f2c640245314)
+
+![WhatsApp Image 2025-04-18 at 14 08 42](https://github.com/user-attachments/assets/fa107fce-2ac0-44fe-8048-6a5da91f2bc6)
+
+![WhatsApp Image 2025-04-18 at 14 09 00](https://github.com/user-attachments/assets/4b690617-6ebf-43c8-88f9-f06b474c5fd6)
+
+![WhatsApp Image 2025-04-18 at 14 09 17](https://github.com/user-attachments/assets/748784c8-075e-4385-baca-ef2e0bfffc5b)
+
+![WhatsApp Image 2025-04-18 at 14 09 25](https://github.com/user-attachments/assets/957c0e1f-97a7-485b-98c2-2b07d0bfadea)
+
+![WhatsApp Image 2025-04-18 at 14 09 41](https://github.com/user-attachments/assets/b54729e6-d51f-4809-8f2f-7ed733786619)
+
+<img width="1021" alt="Screenshot 2025-04-18 at 19 41 08" src="https://github.com/user-attachments/assets/ed2d8ac6-ce62-4598-a5fa-87659ca27de5" />
+
+<img width="1021" alt="Screenshot 2025-04-18 at 19 41 23" src="https://github.com/user-attachments/assets/49969b79-62a1-47d6-8aef-e6482b3f7a5d" />
+
+<img width="1021" alt="Screenshot 2025-04-18 at 19 41 50" src="https://github.com/user-attachments/assets/5a683abb-ba61-463f-9bff-a53263b5cd77" />
+
+<img width="1021" alt="Screenshot 2025-04-18 at 19 42 10" src="https://github.com/user-attachments/assets/fa96aec2-6269-4595-8447-fb13a47748b5" />
+
+<img width="1021" alt="Screenshot 2025-04-18 at 19 44 15" src="https://github.com/user-attachments/assets/12706bf1-c416-4c65-9025-f41331205f48" />
+
+![WhatsApp Image 2025-04-18 at 14 11 17](https://github.com/user-attachments/assets/7f9b07fe-ac07-48f2-863c-d123490cbe38)
+
+
+## 📚 References
+
+Google Cloud Documentation. (n.d.). *Google Cloud*. [https://cloud.google.com/docs](https://cloud.google.com/docs?_gl=1*1t4tcum*_up*MQ..&gclid=CjwKCAjw8IfABhBXEiwAxRHlsCk2cAP8Wirqe_FEvyxDmAcxEQLig4So7TRDbG5YYAYUPzd1URqWjRoCs6wQAvD_BwE&gclsrc=aw.ds)
+
+How to embed a video into GitHub README.md? (n.d.). *Stack Overflow*. [https://stackoverflow.com/questions/4279611/how-to-embed-a-video-into-github-readme-md/4279746#4279746](https://stackoverflow.com/questions/4279611/how-to-embed-a-video-into-github-readme-md/4279746#4279746)
+
+Index | Node.js v21.4.0 Documentation. (n.d.). *Node.js*. [https://nodejs.org/docs/latest/api/](https://nodejs.org/docs/latest/api/)
+
+Neon Docs. (n.d.). *Neon*. [https://neon.tech/docs/introduction](https://neon.tech/docs/introduction)
+
+OpenAI ChatGPT. (n.d.). *OpenAI*. [https://chatgpt.com/](https://chatgpt.com/)
+
+OpenRouter Quickstart Guide. (n.d.). *OpenRouter Documentation*. [https://openrouter.ai/docs/quickstart](https://openrouter.ai/docs/quickstart)
+
+Vercel Documentation. (n.d.). *Vercel: Build and deploy the best web experiences with the Frontend Cloud*. [https://vercel.com/docs](https://vercel.com/docs)
+
+Why does my Webapp not work with Google's OAuth login system? (n.d.). *Stack Overflow*. [https://stackoverflow.com/questions/75260960/why-does-my-webapp-not-work-with-googles-oauth-login-system](https://stackoverflow.com/questions/75260960/why-does-my-webapp-not-work-with-googles-oauth-login-system)
+
+
+---
+
 ## 👥 Contributors
 
-- **Apoorva Jadhav** – [@apoorvajadhav](https://github.com/apoorvajadhav)  
+- **Apoorva Jadhav** – [@apo0orva](https://github.com/apo0orva)  
 - **Krishna Goyal** – [@Krishnagoyal-13](https://github.com/Krishnagoyal-13)
 - **Saatvik Birla** - [@Saatvikbirla](https://github.com/Saatvikbirla)
 - **Bhavya Narang** - [@bhavya405](https://github.com/bhavya405)
