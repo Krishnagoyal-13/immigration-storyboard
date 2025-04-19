@@ -156,9 +156,7 @@ Each response is structured as a clickable storyboard. Click any step to explore
 
 ## 🎦 Video Demo
 
-https://github.com/user-attachments/assets/c888b6e8-4084-4734-b349-510f0d475ac9
-
-<video src="https://youtu.be/fLvJ8VdHLA0?si=JH7xS3IR0TZwlEMu"></video>
+[![Demo Video](https://github.com/user-attachments/assets/fea2d828-3d4c-442b-9ba5-ced9ccf371ef)](https://drive.google.com/file/d/13FswHvC-zFifqd06me6Tq6YrvbE_pIUB/view?usp=sharing)
 
 ---
 
