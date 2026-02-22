@@ -1,22 +1,13 @@
-import React from 'react'
-import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react'
-
+import React from "react"
+import { useRouter } from "next/navigation"
 
 export const LoginForm = () => {
   const router = useRouter()
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Add authentication logic here
-    router.push('/private/storyboard')
+    router.push("/private/storyboard")
   }
-  // Inside your component
-<button
-  onClick={() => signIn('google')}
-  className="w-full py-2 mt-4 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
->
-  Continue with Google
-</button>
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
