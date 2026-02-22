@@ -1,7 +1,6 @@
-
-import GoogleProvider from "next-auth/providers/google"
-import { NextAuthOptions } from "next-auth"
-import { prisma } from "@/lib/prisma" // Make sure this path is correct
+import GoogleProvider from "next-auth/providers/google";
+import { NextAuthOptions } from "next-auth";
+import { prisma } from "@/lib/prisma";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -10,41 +9,44 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       authorization: {
         params: {
-          scope: 'openid email profile',
-        }
-      }
+          scope: "openid email profile",
+        },
+      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/auth",
+    signIn: "/public/auth",
   },
   callbacks: {
     async signIn({ user }) {
+      if (!user.email) return false;
+
       try {
         const existingUser = await prisma.user.findUnique({
-          where: { email: user.email! },
-        })
+          where: { email: user.email },
+        });
 
         if (!existingUser) {
           await prisma.user.create({
             data: {
               name: user.name,
-              email: user.email!,
+              email: user.email,
               image: user.image,
             },
-          })
+          });
         }
 
-        return true
+        return true;
       } catch (error) {
-        console.error("SignIn error:", error)
-        return false
+        console.error("SignIn error:", error);
+        return false;
       }
     },
     async redirect({ url, baseUrl }) {
-      return "/private/prompt"
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      if (url.startsWith(baseUrl)) return url;
+      return `${baseUrl}/private/prompt`;
     },
   },
-}
-
+};

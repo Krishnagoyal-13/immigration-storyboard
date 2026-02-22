@@ -30,7 +30,7 @@ export default function PromptPage() {
 
   useEffect(() => {
     if (status === "unauthenticated") {
-      router.push("/auth");
+      router.push("/public/auth");
     }
   }, [status, router]);
 

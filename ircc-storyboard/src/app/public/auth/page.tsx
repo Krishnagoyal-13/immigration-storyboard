@@ -5,7 +5,6 @@ import { LoginForm } from '@/app/public/auth/LoginForm'
 import { SignupForm } from '@/app/public/auth/SignUpForm'
 import { MapPinIcon, ArrowLeftIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
 
 export default function AuthPage() {
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login')
@@ -61,13 +60,6 @@ export default function AuthPage() {
         <div className="transition-opacity duration-200">
           {activeTab === 'login' ? <LoginForm /> : <SignupForm />}
         </div>
-
-        <button
-  onClick={() => signIn('google', { callbackUrl: '/private/prompt' })}
-  className="w-full py-2 mt-4 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
->
-  Continue with Google
-</button>
       </div>
     </div>
   )
