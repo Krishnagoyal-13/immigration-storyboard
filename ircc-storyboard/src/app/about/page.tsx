@@ -114,7 +114,7 @@ export default function AboutPage() {
               Ready to Start Your Journey?
             </h2>
             <button
-              onClick={() => router.push('/auth')}
+              onClick={() => router.push('/public/auth')}
               className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg inline-flex items-center transition-colors"
             >
               Get Started Now
