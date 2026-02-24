@@ -1,6 +1,11 @@
 {
   "name": "immigration-storyboard",
-  "lockfileVersion": 3,
-  "requires": true,
-  "packages": {}
+  "private": true,
+  "scripts": {
+    "install:app": "npm --prefix ircc-storyboard install",
+    "dev": "npm --prefix ircc-storyboard run dev",
+    "build": "npm run install:app && npm --prefix ircc-storyboard run build",
+    "start": "npm --prefix ircc-storyboard run start",
+    "lint": "npm --prefix ircc-storyboard run lint"
+  }
 }

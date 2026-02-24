@@ -26,13 +26,13 @@ export default function Navbar() {
             </span>
             <Button
               variant="destructive"
-              onClick={() => signOut({ callbackUrl: "/auth" })}
+              onClick={() => signOut({ callbackUrl: "/public/auth" })}
             >
               Sign Out
             </Button>
           </>
         ) : (
-          <Link href="/auth">
+          <Link href="/public/auth">
             <Button>Sign In</Button>
           </Link>
         )}
